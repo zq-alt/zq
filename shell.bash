@@ -21,4 +21,7 @@ else
    echo "$file不存在"
 fi
 
+#查看文件系统的使用率超过90%的情况
+df -hP |awk '{if(NR>=2){print $5,$6}}' |sed 's/%//g' |awk '{if($1>=90){print $2}}'
+
 
