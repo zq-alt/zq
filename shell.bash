@@ -27,3 +27,5 @@ rm -rf file.txt
 df -hP |awk '{if(NR>=2){print $5,$6}}' |sed 's/%//g' |awk '{if($1>=90){print $2}}'
 
 
+#查看服务器端口已tcp状态的分类
+netstat -antp |awk '/^tcp/{stat[$6]++}END{for(i in stat){print i,stat[i]}}'
