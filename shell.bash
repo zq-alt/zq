@@ -29,3 +29,32 @@ df -hP |awk '{if(NR>=2){print $5,$6}}' |sed 's/%//g' |awk '{if($1>=90){print $2}
 
 #查看服务器端口已tcp状态的分类
 netstat -antp |awk '/^tcp/{stat[$6]++}END{for(i in stat){print i,stat[i]}}'
+
+
+#ftp服务自动登录
+read -p "输入你需要连接的ftp服务器的IP地址、登录用户、密码分别为：" ip user password
+read -p "输入您需要操作的类型：（上传请输入put，下载请输入get）" operation
+read -p "输入你需要下载文件或上传文件的目录和名称分别为：" dir file
+case $operation in
+        "put")
+ftp -inv $ip <<!
+user $user $password
+bin
+cd $dir
+put $file
+bye
+!
+    ;;
+    "get")
+ftp -inv $ip <<!
+user $user $password
+bin
+cd $dir
+get $file
+bye
+!
+    ;;
+    *)
+    echo "输入的操作类型有误"
+    exit 1
+esac
