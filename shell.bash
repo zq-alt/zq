@@ -86,3 +86,28 @@ echo ${a%%3*} #12
 [root@splunk local]# echo ${test[3]}
 4
 
+
+#bash中函数
+#!/usr/bin/bash
+test(){
+if [ $1 -eq 5 ];then
+   echo "success"
+else
+   echo "failed"
+fi
+}
+
+test 5
+
+
+#bash中数字运算
+awk 'BEGIN{print 1.1+1.2}'
+
+
+#bash数字比大小
+-eq //equals等于
+-ne //no equals不等于
+-gt //greater than 大于
+-lt //less than小于
+-ge //greater equals大于等于
+-le //less equals小于等于
