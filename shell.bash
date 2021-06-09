@@ -73,3 +73,16 @@ echo ${a%%3*} #12
 %%表示从右向左贪婪删除word匹配成功的部分
 
 
+#数组
+[root@splunk local]# test=(1 2 3 4)
+[root@splunk local]# echo ${#test[*]}
+4
+[root@splunk local]# echo ${test[0]}
+1
+[root@splunk local]# echo ${test[1]}
+2
+[root@splunk local]# echo ${test[2]}
+3
+[root@splunk local]# echo ${test[3]}
+4
+
