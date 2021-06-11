@@ -1,0 +1,3 @@
+#grep来匹配目标字段
+grep -o  '[0-9].[0-9]' /etc/redhat-release
+grep -oP '(?<=release ).*(?= \()' /etc/redhat-release
